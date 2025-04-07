@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SY BBA(CA) Course Structure</title>
+</head>
+<body>
+    <h1>SY BBA(CA) Course Structure</h1>
+    
+    <% Object.keys(courseStructure).forEach(semester => { %>
+        <h2><%= semester %></h2>
+        <ul>
+            <% courseStructure[semester].forEach(course => { %>
+                <li><%= course.code %> - <%= course.name %></li>
+            <% }); %>
+        </ul>
+    <% }); %>
+</body>
+</html>
