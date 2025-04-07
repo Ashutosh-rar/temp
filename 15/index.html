@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in Course</title>
+</head>
+<body>
+    <h2>Enroll User</h2>
+    <input type="number" id="userId" placeholder="User ID">
+    <input type="number" id="courseId" placeholder="Course ID">
+    <button onclick="enroll()">Enroll</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function enroll() {
+            const userId = document.getElementById("userId").value;
+            const courseId = document.getElementById("courseId").value;
+            
+            fetch("http://localhost:3000/enroll", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId: Number(userId), courseId: Number(courseId) })
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById("result").innerText = JSON.stringify(data))
+            .catch(err => console.error(err));
+        }
+    </script>
+</body>
+</html>
