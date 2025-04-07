@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Matrimonial Portal</title>
+</head>
+<body>
+  <h1>Matrimonial Profiles</h1>
+  <ul id="profileList"></ul>
+
+  <script>
+    fetch('/profiles')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('profileList');
+        data.forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = `${p.name}, Age: ${p.age}, Profession: ${p.profession}, Location: ${p.location}`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
