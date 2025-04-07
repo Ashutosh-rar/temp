@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voter Registration</title>
+</head>
+<body>
+  <h1>Register Voter</h1>
+  <form id="voterForm">
+    <input type="text" id="name" placeholder="Name (Uppercase)" required>
+    <input type="number" id="age" placeholder="Age (18+)" required>
+    <input type="text" id="nationality" placeholder="Nationality (Indian)" required>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="response"></p>
+
+  <script>
+    document.getElementById('voterForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const nationality = document.getElementById('nationality').value;
+
+      const res = await fetch('/add-voter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, age, nationality })
+      });
+
+      const result = await res.json();
+      document.getElementById('response').innerText = result.error || result.message;
+    };
+  </script>
+</body>
+</html>
