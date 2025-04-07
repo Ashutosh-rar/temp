@@ -1,0 +1,8 @@
+
+======= Railway eTicket =======
+Passenger Name : ashu
+Train Name     : pune ex
+Seat No        : s1 69
+Date of Journey: 2005-12-12
+==============================
+        
