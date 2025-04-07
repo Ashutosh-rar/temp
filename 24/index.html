@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Historical Places Portal</title>
+</head>
+<body>
+  <h1>🌍 Historical Places</h1>
+  <ul id="placeList"></ul>
+
+  <script>
+    fetch('/places')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('placeList');
+        data.forEach(place => {
+          const li = document.createElement('li');
+          li.textContent = `${place.name} - ${place.location} (Built: ${place.year})`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
